@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.example.etracker.ExpenseTrackerApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 21.375 s - in com.example.etracker.ExpenseTrackerApplicationTests
