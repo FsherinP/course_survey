@@ -19,8 +19,8 @@ public class Survey_Controller {
 	private Survey_Service survey;	
 	
 	@PostMapping (Constants.SURVEY_DATA)
-	public Map<String, Object> insertSurvey( @RequestBody Object data) {
-		return survey.insertFeedback(data);
+	public Map<String, Object> insertSurvey( @RequestBody Map<String, Object> data) {
+		return survey.insertFeedback(data.get("user"));
 	}
 	
 	@GetMapping (Constants.GET_DATA)
