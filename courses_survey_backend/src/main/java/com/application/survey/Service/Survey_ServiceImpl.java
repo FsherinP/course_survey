@@ -9,6 +9,7 @@ import java.util.UUID;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.application.survey.Dao.Survey_Dao;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 
 @Service
@@ -16,12 +17,15 @@ public class Survey_ServiceImpl implements Survey_Service{
 	
 	@Autowired
 	Survey_Dao surveyDao;
+	
+	ObjectMapper objectMapper = new ObjectMapper();
 
 	@Override
-	public Map<String, Object> insertFeedback(Map<String, Object> data) {
+	public Map<String, Object> insertFeedback(Object data) {
 		Map<String, Object> responseData = new HashMap<> ();
-		data.put("id", generateUniqueId());
-		int status = surveyDao.insertCourseFeedback(data);
+		Map<String, Object> map = objectMapper.convertValue(data, Map.class);
+		map.put("id", generateUniqueId());
+		int status = surveyDao.insertCourseFeedback(map);
 		if(status == 1) {
 			responseData.put("response message", "Success");
 			responseData.put("status", status);

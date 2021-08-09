@@ -8,15 +8,19 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
 import com.application.survey.utils.Constants;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Repository
 public class Survey_DaoImpl implements Survey_Dao {
 	
 	@Autowired
 	JdbcTemplate jdbcTemplate;
+	
+//	ObjectMapper objectMapper = new ObjectMapper();
 
 	@Override
 	public int insertCourseFeedback(Map<String, Object> data) {
+//		Map<String, Object> map = objectMapper.convertValue(data, Map.class);
 		
 		String insertQuery = postPreparedStatement(data);
 		int response = jdbcTemplate.update(insertQuery);
