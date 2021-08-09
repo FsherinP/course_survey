@@ -1,6 +1,8 @@
 package com.application.survey.Service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
@@ -27,9 +29,14 @@ public class Survey_ServiceImpl implements Survey_Service{
 		return responseData;
 	}
 	
+	@Override
+	public Map<String, List<Map<String, Object>>> getFeedback() {
+		Map<String, List<Map<String, Object>>> responseData = new HashMap<>();
+		responseData.put("response", surveyDao.getsCourseFeedback());
+		return responseData;
+	}
+	
 	public String generateUniqueId() {
         return UUID.randomUUID().toString();
     }
-	
-	
 }

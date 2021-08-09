@@ -11,4 +11,6 @@ public interface Constants {
 	public static final String SURVEY_TABLE = "course_survey";
 	public final static String SURVEY = "/course-survey";
 	public final static String SURVEY_DATA = "/survey-data";
+	public final static String GET_DATA = "/get-data";
+	public final static String GET_STATEMENT = "SELECT * FROM course_survey;";
 }

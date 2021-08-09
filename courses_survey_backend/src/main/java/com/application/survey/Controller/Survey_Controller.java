@@ -1,7 +1,7 @@
 package com.application.survey.Controller;
 
+import java.util.List;
 import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -18,9 +18,14 @@ public class Survey_Controller {
 	@Autowired
 	private Survey_Service survey;	
 	
-	@PostMapping (Constants.SURVEY_DATA)   // Post Mapping is used because of the POST , similarly use GetMapping
-	public Map<String, Object> test( @RequestBody Map<String, Object> data) {
+	@PostMapping (Constants.SURVEY_DATA)
+	public Map<String, Object> insertSurvey( @RequestBody Map<String, Object> data) {
 		return survey.insertFeedback(data);
+	}
+	
+	@GetMapping (Constants.GET_DATA)
+	public Map<String, List<Map<String, Object>>> getData() {
+		return survey.getFeedback();
 	}
 	
 }
