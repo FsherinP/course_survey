@@ -42,7 +42,7 @@ public class SurveyServiceImpl implements SurveyService{
 		Map<String, Object> responseData = new HashMap<> ();
 		String id = getUniqueId();
 		
-		IndexRequest request = new IndexRequest("courses_survey","feedback", id)
+		IndexRequest request = new IndexRequest(Constants.INDEX_NAME,Constants.TYPE, id)
 				  .source(new Gson().toJson(data.getUser()), XContentType.JSON);
 		request.id(UUID.randomUUID().toString());
 		
@@ -63,7 +63,7 @@ public class SurveyServiceImpl implements SurveyService{
 	@Override
 	public Map<String, List<Map<String, Object>>> getFeedback() {
 		
-		SearchRequest searchRequest = new SearchRequest("courses_survey");
+		SearchRequest searchRequest = new SearchRequest(Constants.INDEX_NAME);
 		SearchSourceBuilder searchSourceBuilder = new SearchSourceBuilder();
 		searchSourceBuilder.query(QueryBuilders.matchAllQuery());
 		searchRequest.source(searchSourceBuilder);

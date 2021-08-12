@@ -8,5 +8,6 @@ public interface Constants {
 	public final static String SUCCESS = "success";
 	public final static String ID = "id";
 	public final static String RESPONSE = "response";
-	
+	public final static String INDEX_NAME = "courses_survey";
+	public final static String TYPE = "feedback";
 }
